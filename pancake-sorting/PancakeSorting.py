@@ -1,10 +1,4 @@
 from unified_planning.shortcuts import *
-from unified_planning.engines import CompilationKind
-from experiments import compilation_solving
-
-compilation = 'up'
-solving = 'fast-downward'
-
 n = 5
 instance = [3,4,2,1,0]
 
@@ -35,7 +29,3 @@ costs: Dict[Action, Expression] = {
     flip: Int(1),
 }
 pancake_problem.add_quality_metric(MinimizeActionCosts(costs))
-
-assert compilation in ['up'], f"Unsupported compilation type: {compilation}"
-
-compilation_solving.compile_and_solve(pancake_problem, solving, compilation)

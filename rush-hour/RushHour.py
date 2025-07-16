@@ -1,9 +1,4 @@
-from experiments import compilation_solving
 from unified_planning.shortcuts import *
-from unified_planning.engines import CompilationKind
-
-compilation = 'up'
-solving = 'fast-downward'
 
 # Example 15Puzzle
 instance = 'BBBCCLIDDKoLIAAKoMooJEEMFFJoooGGGoox'
@@ -210,7 +205,3 @@ costs: Dict[Action, Expression] = {
     move_truck_down: Int(1),
 }
 rush_hour_problem.add_quality_metric(MinimizeActionCosts(costs))
-
-assert compilation in ['up'], f"Unsupported compilation type: {compilation}"
-
-compilation_solving.compile_and_solve(rush_hour_problem, solving, compilation)

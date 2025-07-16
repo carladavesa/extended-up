@@ -1,11 +1,4 @@
-import subprocess
-
-from experiments import compilation_solving
 from unified_planning.shortcuts import *
-from unified_planning.engines import CompilationKind
-
-compilation = 'up'
-solving = 'fast-downward'
 
 instance = subprocess.run(['python3', 'read_instance.py', 'i_1'], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 output = instance.stdout.split("---")
@@ -86,7 +79,3 @@ costs: Dict[Action, Expression] = {
     push_box: Int(1),
 }
 sokoban_problem.add_quality_metric(MinimizeActionCosts(costs))
-
-assert compilation in ['up'], f"Unsupported compilation type: {compilation}"
-
-compilation_solving.compile_and_solve(sokoban_problem, solving, compilation)

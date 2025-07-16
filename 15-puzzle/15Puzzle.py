@@ -1,9 +1,4 @@
-from experiments import compilation_solving
 from unified_planning.shortcuts import *
-from unified_planning.engines import CompilationKind
-
-compilation = 'up'
-solving = 'fast-downward'
 
 # Example 15Puzzle
 initial_blocks = [[7,11,8,3],[14,0,6,15],[1,4,13,9],[5,12,2,10]]
@@ -72,7 +67,3 @@ costs: Dict[Action, Expression] = {
     move_right: Int(1)
 }
 npuzzle_problem.add_quality_metric(MinimizeActionCosts(costs))
-
-assert compilation in ['up'], f"Unsupported compilation type: {compilation}"
-
-compilation_solving.compile_and_solve(npuzzle_problem, solving, compilation)

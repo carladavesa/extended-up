@@ -1,9 +1,4 @@
 from unified_planning.shortcuts import *
-from unified_planning.engines import CompilationKind
-from experiments import compilation_solving
-
-compilation = 'count'
-solving = 'fast-downward'
 
 n = 5
 instance = ['RRRG','RGGG']
@@ -155,7 +150,3 @@ costs: Dict[Action, Expression] = {
     shoot_row_and_column: Int(1)
 }
 plotting_problem.add_quality_metric(MinimizeActionCosts(costs))
-
-assert compilation in ['count', 'count-int', 'count-int-numeric'], f"Unsupported compilation type: {compilation}"
-
-compilation_solving.compile_and_solve(plotting_problem, solving, compilation)

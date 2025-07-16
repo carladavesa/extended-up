@@ -1,17 +1,10 @@
-import subprocess
-
 from unified_planning.shortcuts import *
-from unified_planning.engines import CompilationKind
-from experiments import compilation_solving
 
 #########
 #       #
 #BPB  PB#
 ##### ###
 #########
-
-compilation = 'up'
-solving = 'fast-downward'
 
 instance = subprocess.run(['python3', 'read_instance.py', 'puzznic20'], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 output = instance.stdout.split("---")
@@ -137,7 +130,3 @@ costs: Dict[Action, Expression] = {
     fall_block: Int(0)
 }
 puzznic_problem.add_quality_metric(MinimizeActionCosts(costs))
-
-assert compilation in ['up'], f"Unsupported compilation type: {compilation}"
-
-compilation_solving.compile_and_solve(puzznic_problem, solving, compilation)
